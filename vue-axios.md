@@ -1,12 +1,8 @@
 Vue 原本有一个官方推荐的 ajax 插件 [vue-resource](https://github.com/pagekit/vue-resource)，但是自从 Vue 更新到 2.0 之后，官方就不再更新 vue-resource
 
-目前主流的 Vue 项目，都选择 [axios](https://github.com/mzabriskie/axios) 来完成 ajax 请求，而大型项目都会使用 Vuex 来管理数据，所以这篇博客将结合两者来发送请求
+目前主流的 Vue 项目，都选择 [axios](https://github.com/mzabriskie/axios) 来完成 ajax 请求，而大型项目都会使用 Vuex 来管理数据
 
- 
 
-**前言： **
-
-Vuex 的安装将不再赘述，可以参考之前的博客 [Vue 爬坑之路（四）—— 与 Vuex 的第一次接触](http://www.cnblogs.com/wisewrong/p/6344390.html)
 
 使用 cnpm 安装 axios
 
@@ -36,8 +32,6 @@ Vue.prototype.$ajax = axios
 
 在 main.js 中添加了这两行代码之后，就能直接在组件的 methods 中使用 $ajax 命令
 
-[![复制代\](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
 ```
 methods: {
   submitForm () {
@@ -52,11 +46,7 @@ methods: {
 }
 ```
 
-[![复制代\](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
- 
-
- 
 
 **方案二：在 Vuex 中封装**
 
@@ -74,7 +64,7 @@ action 也有一个固有参数 context，但是 **context 是 state 的父级*
 
 Vuex 的仓库是 store.js，将 axios 引入，并在 action 添加新的方法
 
-[![复制代\](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+
 
 ```
 // store.js
@@ -112,8 +102,6 @@ export default store
     
 ```
 
-[![复制代\](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
 **注意：即使已经在 main.js 中引入了 axios，并改写了原型链，也无法在 store.js 中直接使用 $ajax 命令**
 
 换言之，这两种方案是相互独立的
@@ -134,9 +122,7 @@ submitForm 是绑定在组件上的一个方法，将触发 saveForm，从而通
 
  
 
- 
-
-**附录：配置 axios **
+附录：配置 axios 
 
 上面封装的方法中，使用了 axios 的三个配置项，实际上只有 url 是必须的，完整的 api 可以参考[使用说明](http://www.kancloud.cn/yunye/axios/234845)
 
